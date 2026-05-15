@@ -14,7 +14,7 @@ async function seed() {
   );
 
   const orgId = org.rows[0].id;
-  const adminHash = await hashPassword("change-me-admin-password");
+  const adminHash = await hashPassword("DemoAdmin2026!");
 
   await query(
     `INSERT INTO users (org_id, email, password_hash, first_name, last_name, role)
@@ -23,8 +23,8 @@ async function seed() {
     [orgId, adminHash]
   );
 
-  const managerHash = await hashPassword("change-me-manager-password");
-  const workerHash = await hashPassword("change-me-worker-password");
+  const managerHash = await hashPassword("DemoManager2026!");
+  const workerHash = await hashPassword("DemoWorker2026!");
 
   await query(
     `INSERT INTO users (org_id, email, password_hash, first_name, last_name, role)

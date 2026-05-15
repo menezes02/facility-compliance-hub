@@ -57,7 +57,7 @@ npm run dev
 Default seeded local login:
 
 - Email: `admin@example.com`
-- Password: `change-me-before-production`
+- Password: `DemoAdmin2026!`
 
 Do not reuse local seed credentials in a public or production deployment.
 

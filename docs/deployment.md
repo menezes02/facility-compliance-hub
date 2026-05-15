@@ -57,7 +57,7 @@ sudo certbot --nginx -d operations.example.com
 ## Default access
 
 - Web login: `admin@example.com`
-- Password: `change-me-before-production`
+- Password: `DemoAdmin2026!`
 - Prometheus: `http://SERVER_IP:9090`
 - Grafana: `http://SERVER_IP:3001` with your configured admin password
 

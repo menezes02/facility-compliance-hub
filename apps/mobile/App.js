@@ -13,7 +13,7 @@ export default function App() {
     const [tasks, setTasks] = useState([]);
     const [selectedTask, setSelectedTask] = useState(null);
     const [email, setEmail] = useState("admin@example.com");
-    const [password, setPassword] = useState("change-me-admin-password");
+    const [password, setPassword] = useState("DemoAdmin2026!");
     const [notes, setNotes] = useState("");
     const [answers, setAnswers] = useState({});
     const [loading, setLoading] = useState(false);
