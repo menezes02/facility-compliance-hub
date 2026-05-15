@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "OperationHub",
+    "slug": "operationhub",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "extra": {
+      "apiUrl": "https://example.invalid"
+    },
+    "android": {
+      "package": "com.felipeitprojects.operationhub"
+    }
+  }
+}

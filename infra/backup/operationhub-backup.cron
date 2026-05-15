@@ -1,0 +1,6 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# OperationHub daily backup: database + uploaded evidence/reports.
+# Runs at 02:15 UTC and keeps local archives for 14 days.
+15 2 * * * root cd /opt/operationhub && RETENTION_DAYS=14 ./infra/backup/backup.sh >> /var/log/operationhub-backup.log 2>&1

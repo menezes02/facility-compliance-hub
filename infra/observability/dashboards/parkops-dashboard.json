@@ -1,0 +1,79 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "graphTooltip": 1,
+  "panels": [
+    {
+      "datasource": { "type": "prometheus", "uid": "operationhub-prometheus" },
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 6, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false } },
+      "targets": [{ "editorMode": "code", "expr": "sum(operationhub_tasks_by_status{vertical=\"parking\",status=\"pending\"})", "refId": "A" }],
+      "title": "Pending Parking Tasks",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "operationhub-prometheus" },
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 6, "x": 6, "y": 0 },
+      "id": 2,
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false } },
+      "targets": [{ "editorMode": "code", "expr": "sum(operationhub_tasks_by_status{vertical=\"parking\",status=\"awaiting_review\"})", "refId": "A" }],
+      "title": "Awaiting Review",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "operationhub-prometheus" },
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 6, "x": 12, "y": 0 },
+      "id": 3,
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false } },
+      "targets": [{ "editorMode": "code", "expr": "sum(operationhub_assets_by_status{vertical=\"parking\",status=\"attention\"})", "refId": "A" }],
+      "title": "Parking Assets Needing Attention",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "operationhub-prometheus" },
+      "fieldConfig": { "defaults": { "color": { "mode": "thresholds" }, "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 6, "x": 18, "y": 0 },
+      "id": 4,
+      "options": { "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false } },
+      "targets": [{ "editorMode": "code", "expr": "sum(operationhub_submissions_by_vertical{vertical=\"parking\"})", "refId": "A" }],
+      "title": "Total Parking Submissions",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "operationhub-prometheus" },
+      "fieldConfig": { "defaults": { "color": { "mode": "palette-classic" }, "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 8 },
+      "id": 5,
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" } },
+      "targets": [{ "editorMode": "code", "expr": "sum by (status) (operationhub_tasks_by_status{vertical=\"parking\"})", "legendFormat": "{{status}}", "range": true, "refId": "A" }],
+      "title": "Parking Task Status Mix",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "operationhub-prometheus" },
+      "fieldConfig": { "defaults": { "color": { "mode": "palette-classic" }, "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 8 },
+      "id": 6,
+      "options": { "legend": { "displayMode": "list", "placement": "bottom" } },
+      "targets": [{ "editorMode": "code", "expr": "sum by (status) (operationhub_assets_by_status{vertical=\"parking\"})", "legendFormat": "{{status}}", "range": true, "refId": "A" }],
+      "title": "Parking Asset Health",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["operationhub", "parking"],
+  "templating": { "list": [] },
+  "time": { "from": "now-24h", "to": "now" },
+  "timepicker": {},
+  "timezone": "",
+  "title": "ParkOps Dashboard",
+  "uid": "operationhub-parkops",
+  "version": 1,
+  "weekStart": ""
+}

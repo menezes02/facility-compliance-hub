@@ -1,0 +1,22 @@
+{
+  "name": "operationhub",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:api dev:web",
+    "dev:api": "npm --workspace @operationhub/api run dev",
+    "dev:web": "npm --workspace @operationhub/web run dev",
+    "dev:mobile": "npm --workspace @operationhub/mobile run start",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "seed": "npm --workspace @operationhub/api run seed"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
+

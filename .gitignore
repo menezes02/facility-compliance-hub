@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+dist/
+**/dist/
+build/
+**/build/
+.turbo/
+.expo/
+**/.expo/
+
+# Environment and local secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs and coverage
+*.log
+coverage/
+**/coverage/
+
+# Runtime data and customer evidence
+uploads/
+**/uploads/
+backups/
+**/backups/
+postgres-data/
+**/postgres-data/
+
+# Mobile artifacts and signing material
+*.apk
+*.aab
+*.apks
+*.jks
+*.keystore
+*.pem
+*.key
+android/app/debug.keystore
+**/android/app/debug.keystore
+
+# Database and archive exports
+*.sql
+*.dump
+*.backup
+*.tar
+*.tar.gz
+*.zip
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
