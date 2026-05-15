@@ -8,8 +8,11 @@ dist/
 build/
 **/build/
 .turbo/
+.gradle/
+**/.gradle/
 .expo/
 **/.expo/
+*.tsbuildinfo
 
 # Environment and local secrets
 .env
