@@ -1,6 +1,6 @@
 # Backup and Restore Runbook
 
-OperationHub stores compliance data in two places:
+Facility Compliance Hub stores compliance data in two places:
 
 - PostgreSQL: organizations, users, tasks, submissions, audit logs, reports metadata.
 - `apps/api/uploads`: evidence files, generated PDFs, and CSV exports.

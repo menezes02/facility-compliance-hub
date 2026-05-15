@@ -322,7 +322,7 @@ export default function FieldApp() {
       <SafeAreaView style={styles.container}>
         <StatusBar style="light" />
         <View style={styles.loginCard}>
-          <Text style={styles.eyebrow}>OperationHub Field</Text>
+          <Text style={styles.eyebrow}>Facility Compliance Hub Field</Text>
           <Text style={styles.title}>Worker sign-in</Text>
           <Text style={styles.subtitle}>Connected to {apiUrl.replace("https://", "")}</Text>
           <TextInput

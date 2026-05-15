@@ -1,6 +1,6 @@
 # Enterprise Gap and Showcase Model
 
-OperationHub is currently a functional showcase of a Taskmaster-style operating environment: one shared platform, multiple vertical products, compliance evidence, customer scoping, monitoring, and recoverability.
+Facility Compliance Hub is currently a functional showcase of a Taskmaster-style operating environment: one shared platform, multiple vertical products, compliance evidence, customer scoping, monitoring, and recoverability.
 
 ## Current Capability
 

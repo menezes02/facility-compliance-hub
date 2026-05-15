@@ -83,8 +83,8 @@ public class MainActivity extends Activity {
 
     private void showLogin() {
         setScreen();
-        root.addView(text("OperationHub Field", 28, INK));
-        root.addView(text("Native APK connected to your configured OperationHub API", 15, Color.DKGRAY));
+        root.addView(text("Facility Compliance Hub", 28, INK));
+        root.addView(text("Native APK connected to your configured Facility Compliance Hub API", 15, Color.DKGRAY));
 
         EditText email = input("worker@example.com");
         EditText password = input("DemoWorker2026!");

@@ -1,6 +1,6 @@
 # GitHub Publication Checklist
 
-Use this checklist before making OperationHub public.
+Use this checklist before making Facility Compliance Hub public.
 
 ## Must Not Be Public
 

@@ -1,9 +1,9 @@
 apiVersion: 1
 
 providers:
-  - name: OperationHub Dashboards
+  - name: Facility Compliance Hub Dashboards
     orgId: 1
-    folder: OperationHub
+    folder: Facility Compliance Hub
     type: file
     disableDeletion: false
     editable: true

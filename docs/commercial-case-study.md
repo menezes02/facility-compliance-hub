@@ -1,8 +1,8 @@
-# OperationHub Commercial Case Study
+# Facility Compliance Hub Commercial Case Study
 
 ## Summary
 
-OperationHub is a multi-tenant operations and compliance platform designed for the Irish commercial buildings market. It helps facilities teams digitize recurring checks across fire safety, parking operations, and swimming pool compliance.
+Facility Compliance Hub is a multi-tenant operations and compliance platform designed for the Irish commercial buildings market. It helps facilities teams digitize recurring checks across fire safety, parking operations, and swimming pool compliance.
 
 The project demonstrates how one platform can support multiple operational verticals through shared infrastructure, shared data models, and vertical-specific workflows.
 
@@ -34,7 +34,7 @@ The platform is aimed at:
 
 ## Product Concept
 
-OperationHub provides one operating system for recurring building checks.
+Facility Compliance Hub provides one operating system for recurring building checks.
 
 Managers use the web dashboard to create and review work. Field workers use the Android APK to complete checklist tasks and capture evidence. The backend stores submissions, audit history, and reportable compliance data.
 
@@ -108,7 +108,7 @@ Prometheus / Grafana / Backup Scripts
 
 ## Commercial Value Proposition
 
-OperationHub helps facilities teams:
+Facility Compliance Hub helps facilities teams:
 
 - Prove checks were completed.
 - Reduce paper-based operational risk.
@@ -119,9 +119,9 @@ OperationHub helps facilities teams:
 
 ## Interview Pitch
 
-I built OperationHub as a production-style platform engineering project for commercial building operations. The goal was to demonstrate more than CRUD development: multi-tenancy, mobile field workflows, evidence capture, auditability, monitoring, backups, and containerized deployment.
+I built Facility Compliance Hub as a production-style platform engineering project for commercial building operations. The goal was to demonstrate more than CRUD development: multi-tenancy, mobile field workflows, evidence capture, auditability, monitoring, backups, and containerized deployment.
 
-The commercial angle is the Irish facilities market, where fire safety, parking, and pool compliance checks require repeatable proof. OperationHub shows how one platform can support several verticals with shared infrastructure and vertical-specific workflows.
+The commercial angle is the Irish facilities market, where fire safety, parking, and pool compliance checks require repeatable proof. Facility Compliance Hub shows how one platform can support several verticals with shared infrastructure and vertical-specific workflows.
 
 ## Demo Script
 

@@ -8,7 +8,7 @@ async function seed() {
 
   const org = await query<{ id: string }>(
     `INSERT INTO organizations (name, slug, domain)
-     VALUES ('OperationHub Demo', 'operationhub-demo', 'localhost')
+     VALUES ('Facility Compliance Hub Demo', 'facility-compliance-hub-demo', 'localhost')
      ON CONFLICT (slug) DO UPDATE SET domain = EXCLUDED.domain
      RETURNING id`
   );

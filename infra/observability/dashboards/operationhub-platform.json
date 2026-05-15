@@ -132,8 +132,8 @@
   "time": { "from": "now-1h", "to": "now" },
   "timepicker": {},
   "timezone": "",
-  "title": "OperationHub Platform Infrastructure",
-  "uid": "operationhub-platform",
+  "title": "Facility Compliance Hub Platform Infrastructure",
+  "uid": "facility-compliance-hub",
   "version": 1,
   "weekStart": ""
 }

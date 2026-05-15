@@ -115,8 +115,8 @@ public class FieldActivity extends Activity {
 
     private void showLogin() {
         setScreen();
-        root.addView(text("OperationHub Field", 28, INK));
-        root.addView(text("Native APK connected to your configured OperationHub API", 15, MUTED));
+        root.addView(text("Facility Compliance Hub", 28, INK));
+        root.addView(text("Native APK connected to your configured Facility Compliance Hub API", 15, MUTED));
 
         EditText email = input("worker@example.com");
         EditText password = input("DemoWorker2026!");
@@ -406,7 +406,7 @@ public class FieldActivity extends Activity {
     }
 
     private void postSubmission(String taskId, String notes, JSONArray payload) throws Exception {
-        String boundary = "OperationHubBoundary" + System.currentTimeMillis();
+        String boundary = "FacilityComplianceHubBoundary" + System.currentTimeMillis();
         HttpURLConnection conn = (HttpURLConnection) new URL(API_URL + "/api/submissions").openConnection();
         conn.setRequestMethod("POST");
         conn.setDoOutput(true);

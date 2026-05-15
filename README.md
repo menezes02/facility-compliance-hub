@@ -1,8 +1,8 @@
-# OperationHub
+# Facility Compliance Hub
 
 Commercial operations and compliance platform for Irish commercial buildings.
 
-OperationHub is a multi-tenant SaaS-style platform for facilities teams managing recurring operational checks across fire safety, parking, and swimming pool environments. It replaces paper logs, spreadsheets, and fragmented contractor updates with one workflow for assigning work, collecting mobile evidence, reviewing submissions, and generating audit-ready records.
+Facility Compliance Hub is a multi-tenant SaaS-style platform for facilities teams managing recurring operational checks across fire safety, parking, and swimming pool environments. It replaces paper logs, spreadsheets, and fragmented contractor updates with one workflow for assigning work, collecting mobile evidence, reviewing submissions, and generating audit-ready records.
 
 ## Commercial Positioning
 
@@ -14,7 +14,7 @@ Irish commercial and enterprise buildings need repeatable proof that operational
 - Who completed the work, when, and with what evidence?
 - Can we prove this quickly during an audit, insurance review, or incident investigation?
 
-OperationHub answers those questions with a web dashboard for managers, a native Android APK for field workers, and a PostgreSQL-backed audit trail.
+Facility Compliance Hub answers those questions with a web dashboard for managers, a native Android APK for field workers, and a PostgreSQL-backed audit trail.
 
 ## Target Users
 

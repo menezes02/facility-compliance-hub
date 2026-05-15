@@ -1487,7 +1487,7 @@ export function App() {
       <div className="auth-shell">
         <div className="auth-card">
           <p className="eyebrow">operations.example.com</p>
-          <h1>OperationHub</h1>
+          <h1>Facility Compliance Hub</h1>
           <p className="subcopy">
             Shared operations control for fire inspections, smart parking, and pool compliance.
           </p>
@@ -1544,7 +1544,7 @@ export function App() {
       <aside className="sidebar">
         <div className="sidebar-top">
           <div>
-            <p className="eyebrow">OperationHub</p>
+            <p className="eyebrow">Facility Compliance Hub</p>
             <h2>
               {session.user.firstName} {session.user.lastName}
             </h2>
@@ -2599,7 +2599,7 @@ export function App() {
                 <div className="detail-card">
                   <h4>Interview narrative</h4>
                   <p>
-                    OperationHub is one multi-tenant platform powering multiple operational products: FireOps,
+                    Facility Compliance Hub is one multi-tenant platform powering multiple operational products: FireOps,
                     ParkOps, and PoolOps. The workflow is not a generic task list; it captures proof, timestamps,
                     evidence, corrective actions, reports, and customer-scoped access.
                   </p>

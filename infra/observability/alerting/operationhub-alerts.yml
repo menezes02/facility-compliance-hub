@@ -2,12 +2,12 @@ apiVersion: 1
 
 groups:
   - orgId: 1
-    name: OperationHub Platform Alerts
-    folder: OperationHub
+    name: Facility Compliance Hub Platform Alerts
+    folder: Facility Compliance Hub
     interval: 1m
     rules:
       - uid: operationhub-api-down
-        title: OperationHub API down
+        title: Facility Compliance Hub API down
         condition: C
         data:
           - refId: A
@@ -58,13 +58,13 @@ groups:
         execErrState: Alerting
         for: 2m
         annotations:
-          summary: "OperationHub API is not being scraped by Prometheus."
+          summary: "Facility Compliance Hub API is not being scraped by Prometheus."
         labels:
           severity: critical
         isPaused: false
 
       - uid: operationhub-postgres-down
-        title: OperationHub Postgres down
+        title: Facility Compliance Hub Postgres down
         condition: C
         data:
           - refId: A
@@ -121,7 +121,7 @@ groups:
         isPaused: false
 
       - uid: operationhub-high-5xx
-        title: OperationHub high 5xx rate
+        title: Facility Compliance Hub high 5xx rate
         condition: C
         data:
           - refId: A
@@ -178,7 +178,7 @@ groups:
         isPaused: false
 
       - uid: operationhub-host-memory-high
-        title: OperationHub host memory high
+        title: Facility Compliance Hub host memory high
         condition: C
         data:
           - refId: A
@@ -235,7 +235,7 @@ groups:
         isPaused: false
 
       - uid: operationhub-root-disk-high
-        title: OperationHub root disk high
+        title: Facility Compliance Hub root disk high
         condition: C
         data:
           - refId: A

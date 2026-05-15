@@ -3,7 +3,7 @@
 
     <application
         android:allowBackup="false"
-        android:label="OperationHub Field"
+        android:label="Facility Compliance Hub"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false">
         <activity

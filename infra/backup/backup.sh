@@ -40,7 +40,7 @@ else
 fi
 
 cat > "$work_dir/manifest.txt" <<EOF
-OperationHub backup
+Facility Compliance Hub backup
 created_at_utc=$timestamp
 database=$DB_NAME
 db_service=$DB_SERVICE

@@ -141,7 +141,7 @@ export default function App() {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.loginCard}>
-          <Text style={styles.eyebrow}>OperationHub Field</Text>
+          <Text style={styles.eyebrow}>Facility Compliance Hub Field</Text>
           <Text style={styles.title}>Field sign-in</Text>
           <TextInput style={styles.input} value={email} onChangeText={setEmail} />
           <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />

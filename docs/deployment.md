@@ -11,8 +11,8 @@ The stack also supports `Nginx Proxy Manager`:
 
 - Admin UI: `http://SERVER_IP:81`
 - Default login: `admin@example.com` / `changeme`
-- Proxy target for OperationHub web: `http://SERVER_IP:5173`
-- Proxy target for OperationHub API: `http://SERVER_IP:5000`
+- Proxy target for Facility Compliance Hub web: `http://SERVER_IP:5173`
+- Proxy target for Facility Compliance Hub API: `http://SERVER_IP:5000`
 
 ## DNS
 
