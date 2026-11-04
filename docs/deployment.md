@@ -10,7 +10,7 @@
 The stack also supports `Nginx Proxy Manager`:
 
 - Admin UI: `http://SERVER_IP:81`
-- Default login: `admin@example.com` / `changeme`
+- First login: follow the Nginx Proxy Manager documentation for its initial account and change it immediately
 - Proxy target for Facility Compliance Hub web: `http://SERVER_IP:5173`
 - Proxy target for Facility Compliance Hub API: `http://SERVER_IP:5000`
 
@@ -35,12 +35,15 @@ sudo usermod -aG docker $USER
 cd /opt
 git clone <your-repo-url> operationhub
 cd operationhub
-cp apps/api/.env.example apps/api/.env
+cp apps/api/.env.example apps/api/.env       # set DATABASE_URL and JWT_SECRET
+cp infra/docker/.env.example infra/docker/.env   # fill in every empty value
 npm install
-docker compose -f infra/docker/docker-compose.yml up -d
+docker compose -f infra/docker/docker-compose.yml --env-file infra/docker/.env up -d
 ```
 
-The API container seeds the schema and default workspace automatically on startup.
+The API container seeds the schema and default workspace automatically on startup. Compose refuses to start while required secrets are empty, and the API refuses to start with a missing or weak `JWT_SECRET`.
+
+Set `APP_URL` and `CORS_ORIGINS` to the public origin(s) of the web app (for example `https://operations.example.com`); browser requests from any other origin are rejected.
 
 ## Nginx
 
@@ -57,7 +60,7 @@ sudo certbot --nginx -d operations.example.com
 ## Default access
 
 - Web login: `admin@example.com`
-- Password: `DemoAdmin2026!`
+- Password: the value of `SEED_ADMIN_PASSWORD`, or the generated one printed once by `docker compose logs api` on first start
 - Prometheus: `http://SERVER_IP:9090`
 - Grafana: `http://SERVER_IP:3001` with your configured admin password
 

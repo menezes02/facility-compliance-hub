@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
         root.addView(text("Native APK connected to your configured Facility Compliance Hub API", 15, Color.DKGRAY));
 
         EditText email = input("worker@example.com");
-        EditText password = input("DemoWorker2026!");
+        EditText password = input("");
         password.setInputType(0x00000081);
         root.addView(text("Email", 14, INK));
         root.addView(email);

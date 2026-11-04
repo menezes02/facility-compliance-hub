@@ -44,7 +44,7 @@ export default function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [email, setEmail] = useState("admin@example.com");
-  const [password, setPassword] = useState("DemoAdmin2026!");
+  const [password, setPassword] = useState("");
   const [notes, setNotes] = useState("");
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);

@@ -1183,7 +1183,21 @@ async function runOverdueEscalations() {
   return affected;
 }
 
-app.use(cors({ origin: true, credentials: true }));
+// Only the configured web origins may make credentialed cross-origin requests.
+// Requests without an Origin header (mobile apps, curl, server-to-server) are not affected by CORS.
+const allowedOrigins = new Set(config.corsOrigins);
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.has(origin)) {
+        callback(null, true);
+      } else {
+        callback(null, false);
+      }
+    },
+    credentials: true
+  })
+);
 app.use(express.json({ limit: "10mb" }));
 app.use("/uploads", express.static(config.uploadDir));
 

@@ -119,7 +119,7 @@ public class FieldActivity extends Activity {
         root.addView(text("Native APK connected to your configured Facility Compliance Hub API", 15, MUTED));
 
         EditText email = input("worker@example.com");
-        EditText password = input("DemoWorker2026!");
+        EditText password = input("");
         password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         root.addView(text("Email", 14, INK));
         root.addView(email);

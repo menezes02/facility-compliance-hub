@@ -2,6 +2,25 @@ import { query, pool } from "../db.js";
 import { schemaSql } from "../schema.js";
 import { verticalTemplates } from "@operationhub/verticals";
 import { hashPassword } from "../auth.js";
+import crypto from "node:crypto";
+
+// Demo account passwords come from the environment (SEED_ADMIN_PASSWORD, SEED_MANAGER_PASSWORD,
+// SEED_WORKER_PASSWORD). If unset, a random one is generated and printed once, only for accounts
+// that are actually created by this run. No password is stored in the repository.
+const generatedPasswords: Array<{ email: string; password: string }> = [];
+
+function seedPassword(envName: string, email: string): string {
+  const fromEnv = process.env[envName]?.trim();
+  if (fromEnv) {
+    if (fromEnv.length < 12) {
+      throw new Error(`${envName} must be at least 12 characters`);
+    }
+    return fromEnv;
+  }
+  const password = crypto.randomBytes(15).toString("base64url");
+  generatedPasswords.push({ email, password });
+  return password;
+}
 
 async function seed() {
   await query(schemaSql);
@@ -14,26 +33,23 @@ async function seed() {
   );
 
   const orgId = org.rows[0].id;
-  const adminHash = await hashPassword("DemoAdmin2026!");
+  const demoUsers = [
+    { email: "admin@example.com", env: "SEED_ADMIN_PASSWORD", first: "Demo", last: "Admin", role: "admin" },
+    { email: "manager@example.com", env: "SEED_MANAGER_PASSWORD", first: "Mara", last: "Manager", role: "manager" },
+    { email: "worker@example.com", env: "SEED_WORKER_PASSWORD", first: "Wes", last: "Worker", role: "worker" }
+  ];
 
-  await query(
-    `INSERT INTO users (org_id, email, password_hash, first_name, last_name, role)
-     VALUES ($1, 'admin@example.com', $2, 'Demo', 'Admin', 'admin')
-     ON CONFLICT (org_id, email) DO NOTHING`,
-    [orgId, adminHash]
-  );
-
-  const managerHash = await hashPassword("DemoManager2026!");
-  const workerHash = await hashPassword("DemoWorker2026!");
-
-  await query(
-    `INSERT INTO users (org_id, email, password_hash, first_name, last_name, role)
-     VALUES
-       ($1, 'manager@example.com', $2, 'Mara', 'Manager', 'manager'),
-       ($1, 'worker@example.com', $3, 'Wes', 'Worker', 'worker')
-     ON CONFLICT (org_id, email) DO NOTHING`,
-    [orgId, managerHash, workerHash]
-  );
+  for (const user of demoUsers) {
+    const existing = await query(`SELECT 1 FROM users WHERE org_id = $1 AND email = $2`, [orgId, user.email]);
+    if (existing.rowCount) continue;
+    const hash = await hashPassword(seedPassword(user.env, user.email));
+    await query(
+      `INSERT INTO users (org_id, email, password_hash, first_name, last_name, role)
+       VALUES ($1, $2, $3, $4, $5, $6)
+       ON CONFLICT (org_id, email) DO NOTHING`,
+      [orgId, user.email, hash, user.first, user.last, user.role]
+    );
+  }
 
   const teams = [
     ["Fire Response Alpha", "fire", "Primary fire inspection and compliance team"],
@@ -427,6 +443,12 @@ seed()
   .then(async () => {
     await pool.end();
     console.log("Seed completed");
+    if (generatedPasswords.length) {
+      console.log("Generated demo credentials (shown once; set SEED_*_PASSWORD to choose your own):");
+      for (const { email, password } of generatedPasswords) {
+        console.log(`  ${email}  ${password}`);
+      }
+    }
   })
   .catch(async (error) => {
     console.error(error);

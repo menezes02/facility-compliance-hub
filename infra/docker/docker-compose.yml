@@ -2,10 +2,10 @@ services:
   npm-db:
     image: mariadb:11
     environment:
-      MYSQL_ROOT_PASSWORD: ${NPM_MYSQL_ROOT_PASSWORD:-change-me-npm-root-password}
+      MYSQL_ROOT_PASSWORD: ${NPM_MYSQL_ROOT_PASSWORD:?Set NPM_MYSQL_ROOT_PASSWORD in infra/docker/.env}
       MYSQL_DATABASE: npm
       MYSQL_USER: npm
-      MYSQL_PASSWORD: ${NPM_MYSQL_PASSWORD:-change-me-npm-password}
+      MYSQL_PASSWORD: ${NPM_MYSQL_PASSWORD:?Set NPM_MYSQL_PASSWORD in infra/docker/.env}
     volumes:
       - npm-db-data:/var/lib/mysql
 
@@ -19,7 +19,7 @@ services:
       DB_MYSQL_HOST: npm-db
       DB_MYSQL_PORT: 3306
       DB_MYSQL_USER: npm
-      DB_MYSQL_PASSWORD: ${NPM_MYSQL_PASSWORD:-change-me-npm-password}
+      DB_MYSQL_PASSWORD: ${NPM_MYSQL_PASSWORD:?Set NPM_MYSQL_PASSWORD in infra/docker/.env}
       DB_MYSQL_NAME: npm
     volumes:
       - npm-data:/data
@@ -32,9 +32,9 @@ services:
     environment:
       POSTGRES_DB: operationhub
       POSTGRES_USER: operationhub
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-postgres-password}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in infra/docker/.env}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
@@ -48,9 +48,13 @@ services:
     working_dir: /app
     command: sh -c "npm --workspace @operationhub/api run seed && npm --workspace @operationhub/api run dev"
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgres://operationhub:change-me-postgres-password@db:5432/operationhub}
-      JWT_SECRET: ${JWT_SECRET:-change-me-use-a-long-random-value}
-      APP_URL: http://localhost:5173
+      DATABASE_URL: postgres://operationhub:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in infra/docker/.env}@db:5432/operationhub
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in infra/docker/.env (openssl rand -base64 48)}
+      APP_URL: ${APP_URL:-http://localhost:5173}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,http://localhost:8081}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-}
+      SEED_MANAGER_PASSWORD: ${SEED_MANAGER_PASSWORD:-}
+      SEED_WORKER_PASSWORD: ${SEED_WORKER_PASSWORD:-}
       DEFAULT_DOMAIN: ${DEFAULT_DOMAIN:-localhost}
       SMTP_ENABLED: ${SMTP_ENABLED:-false}
       SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
@@ -106,7 +110,7 @@ services:
   postgres-exporter:
     image: prometheuscommunity/postgres-exporter:v0.17.1
     environment:
-      DATA_SOURCE_NAME: ${POSTGRES_EXPORTER_DATA_SOURCE_NAME:-postgresql://operationhub:change-me-postgres-password@db:5432/operationhub?sslmode=disable}
+      DATA_SOURCE_NAME: postgresql://operationhub:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in infra/docker/.env}@db:5432/operationhub?sslmode=disable
     ports:
       - "9187:9187"
     depends_on:
@@ -142,7 +146,7 @@ services:
       - "3001:3000"
     environment:
       GF_SECURITY_ADMIN_USER: admin
-      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-change-me-grafana-admin-password}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD in infra/docker/.env}
     volumes:
       - ../observability/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasource.yml:ro
       - ../observability/grafana-dashboards.yml:/etc/grafana/provisioning/dashboards/dashboard.yml:ro

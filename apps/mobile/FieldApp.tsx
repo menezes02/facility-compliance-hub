@@ -93,7 +93,7 @@ export default function FieldApp() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [email, setEmail] = useState("worker@example.com");
-  const [password, setPassword] = useState("DemoWorker2026!");
+  const [password, setPassword] = useState("");
   const [notes, setNotes] = useState("");
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
   const [photos, setPhotos] = useState<PickedPhoto[]>([]);

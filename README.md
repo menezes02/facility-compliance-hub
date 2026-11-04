@@ -108,19 +108,17 @@ Docker / Nginx Proxy Manager / Hetzner-style VPS deployment
 
 ```bash
 npm install
-cp .env.example .env
-docker compose -f infra/docker/docker-compose.yml up -d db
+cp apps/api/.env.example apps/api/.env
+# edit apps/api/.env: set JWT_SECRET (openssl rand -base64 48) and the database password
+cp infra/docker/.env.example infra/docker/.env   # fill in every empty value (same Postgres password)
+docker compose -f infra/docker/docker-compose.yml --env-file infra/docker/.env up -d db
 npm --workspace @operationhub/api run seed
 npm run dev
 ```
 
-Default seeded local demo credentials:
+The API **refuses to start** without `DATABASE_URL` and a strong `JWT_SECRET` (32+ characters, no placeholders), and only accepts credentialed browser requests from `APP_URL` and the origins listed in `CORS_ORIGINS`.
 
-- Admin: `admin@example.com` / `DemoAdmin2026!`
-- Manager: `manager@example.com` / `DemoManager2026!`
-- Worker: `worker@example.com` / `DemoWorker2026!`
-
-These are public demo credentials only. Replace them before any real deployment.
+The seed script creates three demo accounts (`admin@example.com`, `manager@example.com`, `worker@example.com`). Their passwords are never stored in the repository: set `SEED_ADMIN_PASSWORD`, `SEED_MANAGER_PASSWORD` and `SEED_WORKER_PASSWORD` to choose them, or leave them unset and the seed script prints randomly generated ones once, when the accounts are created.
 
 ## Documentation
 
